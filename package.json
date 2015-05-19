@@ -4,7 +4,7 @@
   "description": "プログラミング未経験の嫁にnodeを教えてみる",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node level1.js"
   },
   "author": "halmakey",
   "license": "ISC"
