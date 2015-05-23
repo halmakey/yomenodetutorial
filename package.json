@@ -7,5 +7,9 @@
     "start": "node level1.js"
   },
   "author": "halmakey",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.2.16",
+    "sleep": "^2.0.0"
+  }
 }
