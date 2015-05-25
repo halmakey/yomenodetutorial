@@ -1,10 +1,11 @@
 /// <reference path="typings/node/node.d.ts" />
 
 var util = require("./util");
+var readline = require("readline-sync");
 
-function createMob() {
+function createMob(name) {
 	return {
-		name: "???",
+		name: name || "?",
 		hp: 100,
 		mhp: 100,
 		mp: 10,
@@ -12,9 +13,18 @@ function createMob() {
 		atk: 10,
 		def: 0,
 		
-		say: function say(message) {
-			console.log(this.name + "「" + message + "」");	
+		message: function (message) {
+			return this.name + "「" + message + "」";
 		},
+		say: function (message) {
+			console.log(this.message(message));
+		},
+		sel: function (selection, message) {
+			return readline.keyInSelect(selection, this.message(message), {cancel: false});
+		},
+		yn: function(message) {
+			return readline.keyInYN(this.message(message));
+		}
 	};
 };
 module.exports.createMob = createMob;
@@ -23,11 +33,10 @@ function createPlayer() {
 	var player = module.exports.createMob();	
 	do {
 		util.clear();
-		player.name = util.ask("名前は？:");
+		player = createMob(util.ask("名前は？:"));
 		
 		console.log();
 		info(player);
-	
 	} while(!util.yn());
 	return player;
 };

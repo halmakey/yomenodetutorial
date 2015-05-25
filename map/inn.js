@@ -1,8 +1,8 @@
 var util = require("../util");
+var mob = require("../mob");
 
 module.exports = function() {
-	var sel = util.sel(["泊まる (10G)", "やめとく"], "へいらっしゃい。泊まっていくかい？");
-	
+	var sel = mob.createMob("宿屋").yn("へいらっしゃい。一泊Gだよ。泊まっていくかい？");
 	switch (sel) {
 		case 0:
 			if (global.gold < 10) {
